@@ -1,0 +1,26 @@
+<div class="card"  style="width: 18rem;">
+@if(productItem.stock>0){
+    <span class="badge w-50 py-2 m-2 rounded-pill text-bg-success">In stock</span>
+
+}@else {
+    <span class="badge w-50 py-2 m-2 rounded-pill text-bg-warning">Out of stock</span>
+
+}
+
+    <img [src]="productItem.images['0']" height="200" class="card-img-top" alt="...">
+    <div class="card-body">
+        <div class="title d-flex justify-content-between no-wrap">
+        <h5 class="card-title w-75">{{productItem.title}}</h5>
+        <b>{{productItem.price.toFixed(2)}} $</b></div>
+        <p class="card-text"> {{productItem.description}} </p>
+        <div class="card-text"> <b>Rating: </b>
+            <span class="text-warning" *ngFor="let _ of getFlooredRating(productItem.rating); ">
+                <fa-icon [icon]="faSolidStar"></fa-icon> 
+            </span>      
+            </div>       
+          
+         <a routerLink="/cart" class="btn btn-primary mt-2 me-2">Add to Card</a>
+         <a [routerLink]="['/product-details', productItem.id]" class="btn btn-info mt-2 me-2">View Details</a>
+
+    </div>
+</div>

@@ -1,0 +1,39 @@
+<!-- <app-product-card [productItem]="product"></app-product-card> -->
+
+<div class="container mt-5">
+    <h1 class="mt-5">Product Details</h1>
+    @if(product) {
+
+
+    <div class="row g-0 border">
+        <div class="col-md-4">
+            <img [src]="product.images['0']" height="150" class="img-fluid rounded-start" [alt]="product.title">
+        </div>
+        <div class="col-md-8">
+            <div class="card-body pt-5">
+                <h1 class="card-title">{{product.title}}</h1>
+                <p class="card-text"><strong>{{product.price}} $</strong> </p>
+                <p class="card-text">{{product.description}} </p>
+                <p class="card-text"><b>Brand: </b>{{product.brand}} </p>
+                <div class="card-text"> <b>Category: </b> {{product.category}} </div>
+                <div class="card-text"> <b>Rating: </b>
+                    <span class="text-warning" *ngFor="let _ of getFlooredRating(product.rating); ">
+                        <fa-icon [icon]="faSolidStar"></fa-icon>
+                    </span>
+                </div>
+                <hr>
+                <b>{{ product.price | discount:product.discountPercentage }}</b>
+            </div>
+            <a routerLink="/cart" class="btn btn-primary mt-2 me-2">Add to Card</a>
+
+        </div>
+
+    </div>
+    }
+    @else {
+    <div class="alert alert-warning" role="alert">
+        Product not found.
+    </div>
+    } <a routerLink='/' class='btn btn-success mt-2'>Return to back </a>
+
+</div>
