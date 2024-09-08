@@ -1,1 +1,36 @@
-<p>cart works!</p>
+<div class="container mt-2">
+    <h1>cart </h1>
+
+    <table class="table table-striped">
+
+        <thead>
+            <tr>
+                <th colspan="2">Description</th>
+                <th>Quantity</th>
+                <th>Remove</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for(item of cartItems; track $index) {
+            <tr class="align-middle">
+                <td><img src="{{item.images['0']}}" height="100"></td>
+                <td>
+                    <p class="fw-bold">{{ item.title }}</p>
+                    <span>Price: {{ item.price }}</span>
+                </td>
+                <td class="d-flex align-items-center justify-content-center">
+                    <button class="btn btn-danger btn-sm" (click)="decreaseQuantity(item.id)" [disabled]="quantities[item.id] <= 1">-</button>
+                    <p class="my-0 mx-3">{{ quantities[item.id] }}</p>
+                    <button class="btn btn-success btn-sm" (click)="increaseQuantity(item.id)">+</button>
+                  </td>
+                <td><button class="btn btn-danger" (click)="removeItem(item.id)">Remove</button></td>
+                <td>{{ item.price * (quantities[item.id] || 1) }}</td>
+            </tr>
+            }
+            
+        </tbody>
+    </table>
+
+    <p class="text-end">Total: {{ total }}</p>
+</div>

@@ -11,7 +11,9 @@
     "noFallthroughCasesInSwitch": true,
     "skipLibCheck": true,
     "isolatedModules": true,
-    "esModuleInterop": true,
+    "resolveJsonModule": true,    // Allows importing JSON files as modules
+    "esModuleInterop": true,      // Ensures proper module interoperability
+    "allowSyntheticDefaultImports": true ,
     "sourceMap": true,
     "declaration": false,
     "experimentalDecorators": true,

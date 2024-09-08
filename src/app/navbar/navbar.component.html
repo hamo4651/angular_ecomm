@@ -19,6 +19,12 @@
               <li class="nav-item">
                 <a class="nav-link" routerLinkActive="bg-warning text-dark rounded-pill"  routerLink="/register">register</a>
               </li> 
+              <li class="nav-item">
+                <a class="nav-link" routerLinkActive="bg-warning text-dark rounded-pill"  routerLink="/cart">
+                    <fa-icon [icon]="faCartPlus"></fa-icon>
+                    {{cartCount}}
+                </a>
+              </li> 
         </ul>
        
       </div>

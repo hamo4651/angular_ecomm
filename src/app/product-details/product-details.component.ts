@@ -8,6 +8,7 @@ import { faStar as faSolidStar } from '@fortawesome/free-solid-svg-icons';
 import { ProductCardComponent } from "../product-card/product-card.component";
 import { DiscountPipe } from '../discount.pipe';
 import { Router ,  RouterLink } from '@angular/router';
+import { ProductService } from '../services/product.service';
 @Component({
   selector: 'app-product-details',
   standalone: true,
@@ -20,16 +21,19 @@ export class ProductDetailsComponent {
   product:any = [];
   @Input() id?: string;
   faSolidStar=faSolidStar;
+  constructor(private productservise: ProductService) {}
 
   ngOnInit() {
-    this.products = productData;
-    this.product = this.products.find(product => product.id === Number(this.id));
-    if (this.product) {
-      console.log(this.product);
-    } else {
-      console.error('Product not found');
-    }
-    
+    // this.products = productData;
+    // this.product = this.products.find(product => product.id === Number(this.id));
+    // if (this.product) {
+    //   console.log(this.product);
+    // } else {
+    //   console.error('Product not found');
+    // }
+    this.productservise.getProduct(Number(this.id)).subscribe((data: any) => {
+      this.product = data
+    })
   }
   getFlooredRating(rating: number): number[] {
     return new Array(Math.round(rating));

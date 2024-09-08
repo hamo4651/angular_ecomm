@@ -18,8 +18,8 @@
                 <fa-icon [icon]="faSolidStar"></fa-icon> 
             </span>      
             </div>       
-          
-         <a routerLink="/cart" class="btn btn-primary mt-2 me-2">Add to Card</a>
+            <!-- [routerLink]="['/cart', productItem.id]" -->
+         <button (click)="addToCart(productItem)"  class="btn btn-primary mt-2 me-2">Add to Card</button>
          <a [routerLink]="['/product-details', productItem.id]" class="btn btn-info mt-2 me-2">View Details</a>
 
     </div>
