@@ -25,7 +25,7 @@ export class ProductComponent {
       this.products = data.products
     })
     // this.products = productData;
-    
+     
   }
 
 }
